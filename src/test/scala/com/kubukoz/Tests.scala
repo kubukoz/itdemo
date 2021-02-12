@@ -1,3 +1,10 @@
 package com.kubukoz
 
-class Tests()
+import org.scalatest.wordspec.AnyWordSpec
+
+class Tests() extends AnyWordSpec {
+
+  import zio._
+
+  ZIO.succeed(42)
+}
