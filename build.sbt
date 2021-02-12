@@ -1,5 +1,13 @@
 val IntegrationTest = config("it").extend(Test)
 
+val core = project
+  .configs(IntegrationTest)
+  .settings(
+    inConfig(IntegrationTest) {
+      Defaults.testSettings
+    }
+  )
+
 val root = project
   .in(file("."))
   .configs(IntegrationTest)
@@ -18,3 +26,5 @@ val root = project
       "org.typelevel" %% "cats-effect" % "3.0.0-M5" % "it"
     )
   )
+  // Sources from each configuration in core are visible in the same config in root`
+  .dependsOn(core % "compile->compile;test->test;it->it")

@@ -14,4 +14,8 @@ class Its() extends Tests() {
     IO.sleep(10.seconds) *>
       poll(IO.sleep(5.seconds))
   }
+
+  new Core()
+  new CoreTest()
+  new CoreIt()
 }
